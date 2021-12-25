@@ -193,7 +193,7 @@ async def get_files(_, message):
                 file = downloaded_file
                 zip_file_name = None
                 if should_zip:
-                    zip_file_name = file.split('.')[0] + '.zip'
+                    zip_file_name = file.rsplit('.', 1)[1] + '.zip'
                     with ZipFile(zip_file_name, 'w') as zip_file:
                         zip_file.write(file, os.path.basename(file))
                         file = zip_file_name
